@@ -12,7 +12,7 @@
 - [radix-ui](https://www.radix-ui.com/) an open source component library
 - [react-icons](react-icons.github.io/react-icons) an open source icon library.
 - [framer-motion](https://github.com/framer/motion) an open source motion library for React, made by Framer.
-- [Tinybase](https://tinybase.org/) an open source reactive data store, that can Manage your state locally, synchronize it to the cloud.
+- [Tinybase](https://tinybase.org/) an open source reactive data store, that can manage your state locally, synchronize it to the cloud.
 
 ## Basic commands
 
