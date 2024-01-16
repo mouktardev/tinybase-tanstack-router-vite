@@ -1,8 +1,8 @@
 # React + Vite + TinyBase + TanStack Router
 
-<!-- interesting point is TanStack router allow you use the url search param to save the state of the search value and the category filter  -->
+an example of location masking, routing and search params with [TanStack-router](https://tanstack.com/router/v1), data management and Query with [Tinybase](https://tinybase.org/).
 
-## Projects Includes:
+## Includes:
 
 - [Vite](https://vitejs.dev),
 - [TanStack-router](https://tanstack.com/router/v1) handle all Filesystem Routing, Data fetching, and more.
