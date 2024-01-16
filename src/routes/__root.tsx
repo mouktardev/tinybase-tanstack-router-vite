@@ -63,19 +63,19 @@ function RootComponent() {
 
 	return (
 		<Provider storesById={{ Stores }} queriesById={{ Queries }}>
-			<div className="w-full overflow-y-auto scrollbar-thin scrollbar-thumb-zinc-400 scrollbar-thumb-rounded md:h-[100vh] dark:scrollbar-thumb-zinc-700">
-				<main className="container mx-auto max-w-[900px] gap-4 space-y-6 p-5 md:flex md:space-y-0">
-					<NavBar />
-					<section className="w-full flex-1 rounded-md border">
-						<Outlet />
-						{status === "pending" ? (
-							<div className="flex w-full items-center justify-center">
-								<Loading />
-							</div>
-						) : null}
-					</section>
-				</main>
-			</div>
+			{/* <div className="w-full overflow-y-auto scrollbar-thin scrollbar-thumb-zinc-400 scrollbar-thumb-rounded md:h-[100vh] dark:scrollbar-thumb-zinc-700"> */}
+			<main className="container mx-auto max-w-[900px] gap-4 space-y-6 p-5 md:flex md:space-y-0">
+				<NavBar />
+				<section className="w-full flex-1 rounded-md border">
+					<Outlet />
+					{status === "pending" ? (
+						<div className="flex w-full items-center justify-center">
+							<Loading />
+						</div>
+					) : null}
+				</section>
+			</main>
+			{/* </div> */}
 			<StoreInspector />
 		</Provider>
 	);

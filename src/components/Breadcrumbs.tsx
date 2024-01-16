@@ -18,7 +18,7 @@ export function Breadcrumbs() {
 				search={{}}
 				params={{}}
 			>
-				<div className=" flex gap-2 capitalize">
+				<div className="flex gap-2 capitalize">
 					{route.id.match(/[^/]+$/)}
 					<LuChevronRight size={"24px"} />
 				</div>

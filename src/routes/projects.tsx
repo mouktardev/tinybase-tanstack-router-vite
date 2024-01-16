@@ -8,7 +8,9 @@ export const Route = new FileRoute("/projects").createRoute({
 function ProjectsComponent() {
 	return (
 		<>
-			<Breadcrumbs />
+			<div className="border-b">
+				<Breadcrumbs />
+			</div>
 			<Outlet />
 		</>
 	);
