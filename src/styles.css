@@ -41,7 +41,6 @@
 	body {
 		@apply bg-background font-noto leading-6 tracking-wide text-neutral-500 dark:text-neutral-300;
 		min-height: 100dvh;
-		overflow: hidden;
 	}
 	h1,
 	h2,
