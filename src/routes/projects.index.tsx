@@ -42,7 +42,7 @@ function ProjectsIndexComponent() {
 	}, []);
 
 	return (
-		<div className="space-y-5 px-4 py-2">
+		<div className="space-y-5 p-4">
 			<div className="flex items-center gap-4">
 				<Button
 					className="rounded-full border px-3 py-1 font-semibold aria-checked:bg-blue-400 aria-checked:text-white dark:text-neutral-300 dark:aria-checked:bg-neutral-700"

@@ -8,11 +8,11 @@ export const Route = new FileRoute("/projects/$project").createRoute({
 function Project() {
 	const { project } = Route.useParams();
 	return (
-		<section className="space-y-4 px-4 py-2">
-			<h1 className="text-2xl font-semibold">
+		<section className="space-y-4 p-4">
+			<h1 className="text-2xl font-semibold capitalize text-blue-400">
 				{useCell("projects", project, "title", "Stores")}
 			</h1>
-			<article className="border p-4">
+			<article className="rounded-md border p-4">
 				{useCell("projects", project, "article", "Stores")}
 			</article>
 		</section>

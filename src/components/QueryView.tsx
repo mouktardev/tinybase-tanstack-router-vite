@@ -33,7 +33,7 @@ export const QueryView = (props: ProjectsSearch & { value: string }) => {
 								.includes(props.value.toLowerCase())
 					);
 
-					//create filters one to many relationship where a project can have a category and a category have many projects
+					//create one to many relationship where a project can have a category and a category have many projects
 					select("categories", "type");
 					join("categories", "categoryId");
 					props.category !== "all" &&

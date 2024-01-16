@@ -11,20 +11,20 @@ export const NavBar = () => {
 			<div className="flex items-center gap-4 md:flex-col md:items-start md:pb-0">
 				<Avatar>
 					{/* <AvatarImage src="Insert your image" /> */}
-					<AvatarFallback>MD</AvatarFallback>
+					<AvatarFallback>UN</AvatarFallback>
 				</Avatar>
 				<p className="hidden text-lg font-semibold leading-tight md:block">
-					Mouktar dev
+					User Name
 				</p>
 				<div className="flex space-y-2 md:static">
 					<div className="flex gap-2">
 						<Button variant={"outline"}>
-							<a href="https://twitter.com/mouktardev">
+							<a href="">
 								<BsTwitterX size={13} />
 							</a>
 						</Button>
 						<Button variant={"outline"}>
-							<a href="https://www.instagram.com/mouktardev/">
+							<a href="">
 								<LuInstagram size={13} />
 							</a>
 						</Button>

@@ -1,5 +1,7 @@
 # React + Vite + TinyBase + TanStack Router
 
+<!-- interesting point is TanStack router allow you use the url search param to save the state of the search value and the category filter  -->
+
 ## Projects Includes:
 
 - [Vite](https://vitejs.dev),

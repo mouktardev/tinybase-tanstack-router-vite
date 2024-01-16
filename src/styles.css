@@ -30,7 +30,7 @@
 
 @layer base {
 	* {
-		@apply border-solid border-black/10 dark:border-white/10;
+		@apply border-solid border-muted;
 		margin: 0;
 		padding: 0;
 		box-sizing: border-box;
