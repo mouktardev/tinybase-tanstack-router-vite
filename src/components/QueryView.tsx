@@ -2,14 +2,13 @@ import { ProjectsSearch } from "@/schema";
 import { Link } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { LuSearchX } from "react-icons/lu";
-import { Id } from "tinybase";
 import {
 	ResultCellProps,
 	ResultCellView,
 	ResultRowView,
 	useQueries,
+	useResultCell,
 	useResultRowIds,
-	useRowIds,
 } from "tinybase/debug/ui-react";
 
 export const QueryView = (props: ProjectsSearch & { value: string }) => {
@@ -21,10 +20,16 @@ export const QueryView = (props: ProjectsSearch & { value: string }) => {
 				"projects", //tableId
 				({ select, having, join }) => {
 					//columns add
+					select((_, rowId) => rowId).as("projectId");
+
 					select("title");
 					select("excerpt");
 
-					//query Search by title
+					select("categories", "type");
+					join("categories", "categoryId");
+					props.category !== "all" &&
+						having((getCell) => getCell("type") === props.category);
+
 					having(
 						(getCell) =>
 							(getCell("title") as string | number | boolean)
@@ -32,18 +37,11 @@ export const QueryView = (props: ProjectsSearch & { value: string }) => {
 								.toLowerCase()
 								.includes(props.value.toLowerCase())
 					);
-
-					//create one to many relationship where a project can have a category and a category have many projects
-					select("categories", "type");
-					join("categories", "categoryId");
-					props.category !== "all" &&
-						having((getCell) => getCell("type") === props.category);
 				}
 			),
 		[queriesReference, props.category, props.value]
 	);
 
-	const tableRowIds = useRowIds("projects", "Stores");
 	const queryTableRowIds = useResultRowIds("ViewQuery", queriesReference);
 
 	return (
@@ -60,7 +58,6 @@ export const QueryView = (props: ProjectsSearch & { value: string }) => {
 							queries={queriesReference}
 							resultCellComponent={CustomResultCell}
 							getResultCellComponentProps={() => ({
-								tableRowId: tableRowIds[index],
 								category: props.category,
 								search: props.search,
 							})}
@@ -77,18 +74,19 @@ export const QueryView = (props: ProjectsSearch & { value: string }) => {
 	);
 };
 
-const CustomResultCell = (
-	props: ResultCellProps &
-		Partial<ProjectsSearch> & {
-			tableRowId?: Id;
-		}
-) =>
-	props.cellId === "title" ? (
+const CustomResultCell = (props: ResultCellProps & Partial<ProjectsSearch>) => {
+	const projectId = useResultCell(
+		props.queryId,
+		props.rowId,
+		"projectId",
+		props.queries
+	);
+	return props.cellId === "title" ? (
 		<Link
 			to="/projects/$project/modal"
 			className="text-lg font-bold capitalize text-blue-400"
 			params={{
-				project: props.tableRowId as string,
+				project: projectId as string,
 			}}
 			search={{
 				category: props.category as ProjectsSearch["category"],
@@ -101,8 +99,9 @@ const CustomResultCell = (
 		<p className="inline-block rounded-full border px-2 py-1 text-sm font-bold opacity-50">
 			<ResultCellView {...props} />
 		</p>
-	) : (
+	) : props.cellId === "excerpt" ? (
 		<div>
 			<ResultCellView {...props} />
 		</div>
-	);
+	) : null;
+};
