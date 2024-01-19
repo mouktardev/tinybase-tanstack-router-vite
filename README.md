@@ -1,6 +1,6 @@
 # React + Vite + TinyBase + TanStack Router
 
-an example of location masking, routing and search params with [TanStack-router](https://tanstack.com/router/v1), data management and Query with [Tinybase](https://tinybase.org/).
+an example of location masking, routing and search params with [TanStack-router](https://tanstack.com/router/v1), Data management and Query with [Tinybase](https://tinybase.org/).
 
 ## Includes:
 
