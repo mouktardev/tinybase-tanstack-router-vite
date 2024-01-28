@@ -6,6 +6,7 @@ import {
 	DialogTitle,
 } from "@/components/ui/Dialog";
 import { FileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { useCell } from "tinybase/debug/ui-react";
 
 export const Route = new FileRoute("/$project/modal").createRoute({
@@ -16,7 +17,9 @@ function ProjectModalComponent() {
 	const { project } = Route.useParams();
 	const { category, search } = Route.useSearch();
 	const navigate = useNavigate();
-
+	useEffect(() => {
+		console.log(category);
+	}, [category]);
 	return (
 		<Dialog
 			open

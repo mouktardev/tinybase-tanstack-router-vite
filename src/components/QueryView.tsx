@@ -95,13 +95,13 @@ const CustomResultCell = (props: ResultCellProps & Partial<ProjectsSearch>) => {
 		>
 			<ResultCellView {...props} />
 		</Link>
-	) : props.cellId === "type" ? (
-		<p className="inline-block rounded-full border px-2 py-1 text-sm font-bold opacity-50">
-			<ResultCellView {...props} />
-		</p>
 	) : props.cellId === "excerpt" ? (
 		<div>
 			<ResultCellView {...props} />
 		</div>
+	) : props.cellId === "type" ? (
+		<p className="inline-block rounded-full border px-2 py-1 text-sm font-bold opacity-50">
+			<ResultCellView {...props} />
+		</p>
 	) : null;
 };

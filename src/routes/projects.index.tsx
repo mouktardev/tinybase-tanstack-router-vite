@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { ProjectsSearchSchema } from "@/schema";
 import { FileRoute, Outlet, useNavigate } from "@tanstack/react-router";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { CgFormatSlash } from "react-icons/cg";
 import { LuSearch } from "react-icons/lu";
 import { useDebounce } from "use-debounce";
@@ -17,20 +17,19 @@ function ProjectsIndexComponent() {
 	const navigate = useNavigate({ from: Route.fullPath });
 	const { category, search } = Route.useSearch();
 	const [value] = useDebounce(search, 500);
+	const inputRef = useRef<HTMLInputElement>(null);
 
 	// this is for `/` shortcut search command
 	useEffect(() => {
 		const open = (e: KeyboardEvent) => {
 			if (e.key === "/") {
 				e.preventDefault();
-				const input = document.getElementById("Search");
-				input?.focus();
+				inputRef.current?.focus();
 			}
 		};
 		const close = (e: KeyboardEvent) => {
 			if (e.key === "Escape") {
-				const input = document.getElementById("Search");
-				input?.blur();
+				inputRef.current?.blur();
 			}
 		};
 		window.addEventListener("keydown", close);
@@ -86,6 +85,7 @@ function ProjectsIndexComponent() {
 			</div>
 			<div className="relative">
 				<Input
+					ref={inputRef}
 					id="Search"
 					name="search"
 					type="text"
