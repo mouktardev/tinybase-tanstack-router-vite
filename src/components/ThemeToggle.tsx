@@ -4,12 +4,11 @@ import { useSetValueCallback, useValue } from "tinybase/debug/ui-react";
 import { Button } from "./ui/Button";
 
 export default function ThemeToggle() {
-	const isDark = useValue("isThemeDark", "Stores");
+	const isDark = useValue("isThemeDark");
 	const handleClick = useSetValueCallback(
 		"isThemeDark",
 		(_, store) => !store.getValue("isThemeDark"),
 		[],
-		"Stores"
 	);
 
 	//for tailwind we add a class to the body tag for theming then update the local storage

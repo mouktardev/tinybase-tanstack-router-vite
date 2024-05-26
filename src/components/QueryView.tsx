@@ -1,18 +1,10 @@
-import { ProjectsSearch } from "@/schema";
+import { ProjectsSearch, ResultCellProps, ResultCellView, ResultRowView, useQueries, useResultCell, useResultRowIds } from "@/schema";
 import { Link } from "@tanstack/react-router";
 import { useMemo } from "react";
 import { LuSearchX } from "react-icons/lu";
-import {
-	ResultCellProps,
-	ResultCellView,
-	ResultRowView,
-	useQueries,
-	useResultCell,
-	useResultRowIds,
-} from "tinybase/debug/ui-react";
 
 export const QueryView = (props: ProjectsSearch & { value: string }) => {
-	const queriesReference = useQueries("Queries");
+	const queriesReference = useQueries();
 	useMemo(
 		() =>
 			queriesReference?.setQueryDefinition(
@@ -57,10 +49,6 @@ export const QueryView = (props: ProjectsSearch & { value: string }) => {
 							rowId={rowId}
 							queries={queriesReference}
 							resultCellComponent={CustomResultCell}
-							getResultCellComponentProps={() => ({
-								category: props.category,
-								search: props.search,
-							})}
 						/>
 					</div>
 				))
@@ -74,23 +62,19 @@ export const QueryView = (props: ProjectsSearch & { value: string }) => {
 	);
 };
 
-const CustomResultCell = (props: ResultCellProps & Partial<ProjectsSearch>) => {
+const CustomResultCell = (props: typeof ResultCellProps) => {
 	const projectId = useResultCell(
 		props.queryId,
 		props.rowId,
 		"projectId",
 		props.queries
-	);
+	) as string;
 	return props.cellId === "title" ? (
 		<Link
-			to="/projects/$project/modal"
+			to="/projects/$project"
 			className="text-lg font-bold capitalize text-blue-400"
 			params={{
-				project: projectId as string,
-			}}
-			search={{
-				category: props.category as ProjectsSearch["category"],
-				search: props.search as ProjectsSearch["search"],
+				project: projectId,
 			}}
 		>
 			<ResultCellView {...props} />

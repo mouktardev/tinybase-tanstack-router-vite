@@ -1,12 +1,12 @@
-import { Router, RouterProvider } from "@tanstack/react-router";
+import { RouterProvider, createRouter } from "@tanstack/react-router";
 import ReactDOM from "react-dom/client";
-import { ProjectModalToProjectMask, routeTree } from "./routeTree.gen";
+import { routeTree } from "./routeTree.gen";
 import "./styles.css";
 
+
 // Set up a Router instance
-const router = new Router({
+const router = createRouter({
 	routeTree,
-	routeMasks: [ProjectModalToProjectMask],
 	// defaultPreload: "intent",
 });
 

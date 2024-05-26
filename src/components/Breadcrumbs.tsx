@@ -11,12 +11,12 @@ export function Breadcrumbs() {
 		route.id.match(/[^/]+$/) ? (
 			<Link
 				key={index}
-				activeProps={{
-					className: "font-bold",
-				}}
 				to={route.pathname}
-				search={{}}
-				params={{}}
+				activeProps={{ className: "font-bold text-primary" }}
+				inactiveProps={{ className: "text-secondary" }}
+				activeOptions={{
+					includeSearch: false,
+				}}
 			>
 				<div className="flex gap-2 capitalize">
 					{route.id.match(/[^/]+$/)}

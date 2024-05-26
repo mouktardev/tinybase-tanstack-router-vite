@@ -1,7 +1,7 @@
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { FileRoute, Outlet } from "@tanstack/react-router";
+import { Outlet, createFileRoute } from "@tanstack/react-router";
 
-export const Route = new FileRoute("/projects").createRoute({
+export const Route = createFileRoute("/projects")({
 	component: ProjectsComponent,
 });
 
